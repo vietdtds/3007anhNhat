@@ -1,1 +1,69 @@
+Cách sử dụng git để quản lý project
+I. Tìm hiểu Git và phương pháp làm việc với Git
+*Git là gì?
+Git là một hệ thống quản lý phiên bản phân tán (có tên tiếng anh là Distributed Version Control System – DVCS) được ra đời vào năm 2005 hiện đang được sử dụng vô cùng phổ biến. Git cung cấp cho mỗi một lập trình viên kho lưu trữ riêng cho toàn bộ lịch sử thay đổi. 
 
+*Lợi ích của Git:
+➢Lưu lại được các phiên bản khác nhau của mã nguồn dự án phần mềm
+➢Khôi phục lại mã nguồn từ một phiên bản bất kỳ
+➢Dễ dàng so sánh giữa các phiên bản
+➢Phát hiện ai đã sửa phần nào làm phát sinh lỗi
+➢Khôi phục lại tệp tin bị mất
+➢Dễ dàng thử nghiệm, mở rộng tính năng của dự án mà không làm ảnh hưởng đến phiên bản chính (master branch)
+➢Giúp phối hợp thực hiện dự án trong nhóm một cách hiệu quả
+
+*Các thuật ngữ quan trọng:
+➢git: là prefix của các lệnh được sử dụng dưới CLI
+➢branch: được hiểu như là nhánh, thể hiện sự phân chia các version khi 2 version đó có sự sai khác nhất định và 2 version đều có sự khác nhau.
+➢commit: là một điểm trên cây công việc (Work Tree ) hay gọi là cây phát triển công việc
+➢clone: được gọi là nhân bản, hay thực hiện nhân bản. Sử dụng để clone các project, repository trên các hệ thống chạy trên cơ sở là git, ví dụ như: bitbucket, github, gitlab, cor(1 sản phẩm mã nguồn mở cho phép người dùng tự tạo git server cho riêng mình trên vps, server),… Việc clone này sẽ sao chép repository tại commit mình mong muốn, dùng để tiếp tục phát triển. Thao tác này sẽ tải toàn bộ mã nguồn, dữ liệu về máy tính của bạn.
+➢folk: Folk là thao tác thực hiện sao chép repository của chủ sở hữu khác về git account của mình. sử dụng và đối xử như 1 repository do mình tạo ra.
+➢repository: Kho quản lý dữ liệu, là nơi lưu trữ các dữ liệu, mã nguồn của project.
+➢tag: sử dụng để đánh dấu một commit khi bạn có quá nhiều commit tới mức không thể kiểm soát được.
+➢remote: sử dụng để điều khiển các nhánh từ một repository trên git server, đối xử với các nhánh trên remote tương tự như đối xử với các nhánh trên local
+➢diff: So sánh sự sai khác giữa phiên bản hiện tại với phiên bản muốn so sánh, nó sẽ thể hiện các sự khác nhau
+➢.gitignore: file mặc định của git sử dụng để loại bỏ (ignore) các thư mục, file mà mình không muốn push lên git server
+
+*Các câu lệnh khi làm việc với Git:
+➢git config
+Tác dụng : Để set user name và email của bạn trong main configuration file.
+Cách dùng : Để kiểm tra tên và kiểu email trong cấu hình dùng git config -- global user.name và git config -- global user.email. Để set email hoặc tên mới git config -- global user.name = “vietdtds” và git config -- global user.email = “vietdtds@gmail.com”
+➢git init
+Tác dụng : Khởi tạo 1 git repository 1 project mới hoặc đã có.
+Cách dùng: git init trong thư mục gốc của dự án.
+➢git clone
+Tác dụng: Copy 1 git repository từ remote source.
+Cách dùng: git clone <:clone git url:>
+➢git status
+Tác dụng: Để check trạng thái của những file bạn đã thay đổi trong thư mục làm việc. VD: Tất cả các thay đổi cuối cùng từ lần commit cuối cùng.
+Cách dùng: git status trong thư mục làm việc.
+➢git add
+Tác dụng: Thêm thay đổi đến stage/index trong thư mục làm việc.
+Cách dùng: git add
+➢git commit
+Tác dụng: commit nghĩa là một action để Git lưu lại một snapshot của các sự thay đổi trong thư mục làm việc. Và các tập tin, thư mục được thay đổi đã phải nằm trong Staging Area. Mỗi lần commit nó sẽ được lưu lại lịch sử chỉnh sửa của code kèm theo tên và địa chỉ email của người commit. Ngoài ra trong Git bạn cũng có thể khôi phục lại tập tin trong lịch sử commit của nó để chia cho một branch khác, vì vậy bạn sẽ dễ dàng khôi phục lại các thay đổi trước đó.
+Cách dùng: git commit -m ”Đây là message, bạn dùng để note những thay đổi để sau này dễ dò lại”
+➢git push/git pull
+Tác dụng: Push hoặc Pull các thay đổi đến remote. Nếu bạn đã added và committed các thay đổi và bạn muốn đẩy nó lên hoặc remote của bạn đã update và bạn apply tất cả thay đổi đó trên code của mình.
+Cách dùng: git pull <:remote:> <:branch:> and git push <:remote:> <:branch:>
+➢git branch
+Tác dụng: liệt kê tất cả các branch (nhánh).
+Cách dùng: git branch hoặc git branch -a
+➢git checkout
+Tác dụng: Chuyển sang branch khác
+Cách dùng: git checkout <: branch:> hoặc ** _ git checkout -b <: branch:> nếu bạn muốn tạo và chuyển sang một chi nhánh mới.
+➢git stash
+Tác dụng: Lưu thay đổi mà bạn không muốn commit ngay lập tức.
+Cách dùng: git stash trong thư mục làm việc của bạn.
+➢git merge
+Tác dụng: Merge 2 branch lại với nhau.
+Cách dùng: Chuyển tới branch bạn muốn merge rồi  dùng git merge <:branch ban muon merge:>
+➢git reset
+Tác dụng: Bạn đã đưa một tập tin nào đó vào Staging Area nhưng bây giờ bạn muốn loại bỏ nó ra khỏi đây để không phải bị commit theo.
+Cách dùng: git reset HEAD tên_file
+➢git remote
+Tác dụng: Để check remote/source bạn có hoặc add thêm remote
+Cách dùng: git remote để kiểm tra và liệt kê. Và git remote add <: remote url:> để thêm.
+➢git add
+Tác dụng: Để đưa một tập tin vào Staging Area
+Cách dùng: git add tên_file hoặc muốn thêm hết file của thư mục thì git add.
