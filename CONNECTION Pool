@@ -1,1 +1,274 @@
 CONNECTION Pool - VŨ KHÍ TỐI THƯỢNG KẾT NỐI DATABASE
+https://codelearn.io/Media/Default/Users/Vua_5FVo_5FDanh/weather/connection-pool-logic.png
+1. Connection pool (vùng kết nối) : là kỹ thuật cho phép tạo và duy trì 1 tập các kết nối dùng chung nhằm tăng hiệu suất cho các ứng dụng bằng cách sử dụng lại các kết nối khi có yêu cầu thay vì việc tạo kết nối mới.
+
+2. Cách hoạt động/ làm việc của Connection pooling là: 
+- Một khi ứng dụng được chạy thì Connection pool tạo ra một vùng kết nối, trong vùng kết nối đó có các kết nối do chúng ta tạo ra sẵn
+- Như vậy thì khi có một request đến thì nó kiểm tra xem có kết nối nào đang rảnh không? Nếu có nó sẽ dùng kết nối đó còn không thì nó đợi đến khi có kết nối nào đó rảnh hoặc kết nối khác bị timeout
+- Kết nối sau khi sử dụng sẽ không đóng lại ngay mà sẽ được trả về để dùng lại khi được yêu cầu
+
+3. Thông tin cấu hình 
+- nó thường được cấu hình ở file config của ứng dụng server. Tùy thuộc vào ứng dụng có thể yêu cầu nhiều hơn 1 connection pool, mỗi connection pool được sử dụng bởi các thành phần khác nhau của ứng dụng
+Một số tham khảo cấu hình: 
++Connection pool name: Sử dụng để xác định và đăng ký với datasource.
++Initial number of connections: Số connection được tạo vào đưa vào connection pool khi ứng dụng được start.
++Maximum and minimum pool size: Số connection tối đa và tối thiểu trong connection pool
++JDBC URL: chỉ rõ vị trí database, database name, port, hostname
++JDBC driver class name
+
+4. Một số lợi ích
+- Hiệu suất được cải thiện: tái sử dụng các kết nối hiện có giúp giảm thiểu chi phí thiết lập và  đóng kết nối, giúp tăng tốc độ phản hồi cho các yêu cầu của khách hàng.
+- Hiệu quả tài nguyên: Quản lý bể kết nối đảm bảo tài nguyên được sử dụng một cách hiệu quả, tránh việc tiêu thụ tài nguyên quá mức và nguy cơ cạn kiệt tài nguyên.
+- Khả năng mở rộng: Connection pool cho phép ứng dụng xử lý một số lượng lớn các khách hàng đồng thời mà không cần tạo quá nhiều kết nối.
+- Quản lý kết nối: Connection pool xử lý các phức tạp về việc quản lý kết nối, chẳng hạn như tái thiết lập kết nối bị mất hoặc xử lý thời gian chờ kết nối.
+- Cân bằng tải: Một số cài đặt connection pool có thể phân phối kết nối trên nhiều máy chủ cơ sở dữ liệu, giúp cân bằng tải.
+====> điều quan trọng là cần cấu hình connection pool một cách phù hợp
+
+5. Ví dụ một bài toán cụ thể
+VD: Ứng dụng trang Web bán hàng trực tuyến
+Giả sử bạn đang xây dựng trang web bán hàng đơn giản cho phép người dùng cmt về sản phẩm và xem các sản phẩm khác đã được đăng trước đó.
+WEB bán hàng này sử dụng csdl MySQL để lưu trữ thông tin về các sản phẩm và người dùng
+Khi một người truy cập vào, ứng dụng cần truy vấn cơ sở dữ liệu để lấy danh sách sản phẩm đã đăng. Mỗi khi có yêu cầu từ người dùng, ứng dụng sẽ cần thiết lập
+kết nối mới đến csdl để được truy vấn
+* Nếu không sử dụng connection pool thì: + Mỗi yêu cầu từ người dùng sẽ tạo một kết nối mới đến cơ sở dữ liệu.
+                                         + Sau khi truy vấn hoàn tất, kết nối sẽ bị đóng.
+                                         + Khi có yêu cầu tiếp theo, ứng dụng lại tạo một kết nối mới và lặp lại quá trình.
+==> Vấn đề ở đây là như thế sẽ gây tốn kém về thời gian và tài nguyên. Đặc biệt là khi ứng dụng có quá nhiều yêu cầu cùng lúc, việc này gây quá tải và làm chậm hiệu suất của ứng dụng
+* Khi sử dụng connection pool thì: + Khi ứng dụng khởi động, nó sẽ tạo một bể chứa một số kết nối được thiết lập trước đến cơ sở dữ liệu (ví dụ: 10 kết nối).
+                                   + Khi có yêu cầu từ người dùng, ứng dụng sẽ mượn một kết nối có sẵn từ bể để thực hiện truy vấn.
+                                   + Sau khi truy vấn hoàn tất, kết nối sẽ được trả lại bể để tái sử dụng bởi các yêu cầu tiếp theo.
+==> Vấn đề về thời gian và tài nguyên được giải quyết, nên trang web có thể dáp ứng nhanh hơn cho người dùng, nâng cao trải nghiệm
+Số lượng kết nối đến csdl cũng được kiểm soát tốt hơn, tránh gây quá tải và cải thiện hiệu suất tổng thể của ứng dụng
+============> Qua ví dụ thực tế trên thì ra nhìn thấy rõ hơn lợi ích của việc sử dụng connection pool trong việc quản lí kết nối đến csdl cho ứng dụng Web
+
+6. Để thực hành tự làm một Connection Pool đơn giản
+-Tạo một abstract thread
+public abstract class AbsThread extends Thread{
+	@Override
+	public void run() {
+		while(true) {
+			synchronized (this) {
+				try {
+					sleep(10);
+				} catch (Exception e) {
+					logger.info(e);
+				}
+			}
+		}
+	}
+	
+	public abstract void execute();
+}
+Tạo một class để làm class config
+public class DBConnectionPoolConfig {
+	private static final String SERVER_NAME = "localhost"; 
+	public static final int MAX_POOL_SIZE = 20;
+	public static final int MIN_POOL_SIZE = 5;
+	public static final int INIT_POOL_SIZE = 10;
+	public static final String DB_PORT = "1521";
+	public static final String USERNAME = "root";
+	public static final String PASSWORD = "";
+	public static final String SID = "orcl";
+	public static final String URL =  "jdbc:oracle:thin:@" + SERVER_NAME + ":" + DB_PORT + ":" + SID;
+	public static final long TIME_OUT = 200;
+}
+Mỗi connection trong một pool mình sẽ định nghĩa nó với cái tên connectionCell
+// This class contain Connection and check Connection close and get Timeout
+public class DBConnectionCell {
+	private String username;
+	private String password;
+	private String url;
+	private long relaxTime;
+	private long timeOut;
+	
+	Logger logger = Logfactory.getLogger(DBConnectionCell.class);
+	Connection conn;
+	public Connection getDbConnection() {		
+		return conn;
+	}
+	public long getRelaxTime() {
+		return relaxTime;
+	}
+	public long getTimeOut() {
+		return timeOut;
+	}
+
+        // Tạo mới một connection
+	public DBConnectionCell(String username, String password, String url, long relaxTime) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.url = url;
+		this.relaxTime = relaxTime;
+		try {
+			conn = DriverManager.getConnection(DBConnectionPoolConfig.URL, DBConnectionPoolConfig.USERNAME, DBConnectionPoolConfig.PASSWORD);
+		} catch (SQLException e) {
+			logger.info(getInformation());
+		} 
+	}
+        
+	public boolean isTimeOut() {
+		if(System.currentTimeMillis() - relaxTime > timeOut) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void close() throws Exception{
+		try {
+			conn.close();
+		} catch (Exception e) {
+			logger.warn(getInformation(), e);
+		}
+	}
+	public boolean isClosed() throws Exception{
+		return conn.isClosed();
+	}
+	
+	public String getInformation() {
+		String infor = "\nInfor :  Connection ( URL :"+url+" , User name : "+username+", Password : "+password+", "+conn.toString()+" )";
+		return infor;
+	}
+        
+	public void setRelaxTime(long relaxTime) {
+		this.relaxTime = relaxTime;
+	}
+
+//	Class ConnectionPool
+public class BaseConnectionPool {
+	Logger logger = Logfactory.getLogger(BaseConnectionPool.class);
+
+	private LinkedBlockingQueue<DBConnectionCell> pool = new LinkedBlockingQueue<DBConnectionCell>();
+	protected int numOfConnectionCreated = 0;
+	
+	protected String sid;
+	protected int max_pool_size;
+	protected int init_pool_size;
+	protected int min_pool_size;
+	protected long time_out = 10000;
+
+	protected String url;
+	protected String user;
+	protected String password;
+
+	protected Thread thread;
+	protected long start_time;
+	protected long end_time;
+	protected static BaseConnectionPool instancePool;
+
+	
+	public BaseConnectionPool() {
+	}
+
+	//Setting for Pool
+	public synchronized static BaseConnectionPool getInstace() {
+		if (instancePool == null) {
+			instancePool = new BaseConnectionPool();
+			instancePool.setInit_pool_size(DBConnectionPoolConfig.INIT_POOL_SIZE);
+			instancePool.setMax_pool_size(DBConnectionPoolConfig.MAX_POOL_SIZE);
+			instancePool.setMin_pool_size(DBConnectionPoolConfig.MIN_POOL_SIZE);
+			instancePool.setUrl(DBConnectionPoolConfig.URL);
+			instancePool.setUser(DBConnectionPoolConfig.USERNAME);
+			instancePool.setPassword(DBConnectionPoolConfig.PASSWORD);
+			instancePool.setTime_out(DBConnectionPoolConfig.TIME_OUT);
+			instancePool.sid = DBConnectionPoolConfig.SID;
+			instancePool.thread = new AbsThread() {
+
+				/*
+				 * When the number of connection > min connection , close TimeOut Connection
+				 */
+				@Override
+				public void execute() {
+					for (DBConnectionCell connection : instancePool.pool) {
+						if (instancePool.numOfConnectionCreated > instancePool.min_pool_size) {
+							if (connection.isTimeOut()) {
+								try {
+									connection.close();
+									instancePool.pool.remove(connection);
+									instancePool.numOfConnectionCreated--;
+								} catch (Exception e) {
+									logger.info("Waring : Connection can not close in timeOut !");
+								}
+							}
+						}
+					}
+
+				}
+			};
+		}
+		return instancePool;
+	}
+
+	public void start() {
+		logger.info("Create Connection pool........................ ");
+		// Load Connection to Pool
+		start_time = System.currentTimeMillis();
+		try {
+			for (int i = 0; i < init_pool_size; i++) {
+				DBConnectionCell connection = new DBConnectionCell(url, user, password, time_out);
+				pool.put(connection);
+				numOfConnectionCreated++;
+			}
+		} catch (Exception e) {
+			logger.warn(String.format(
+					"[Message : can not start connection pool] - [Connection pool : %s] - " + "[Exception : %s]",
+					this.toString(), e));
+		}
+		thread.start();
+		end_time = System.currentTimeMillis();
+		logger.info("Start Connection pool in : " + end_time + start_time + " ms .");
+	}
+public synchronized DBConnectionCell getConnection() {
+		DBConnectionCell connectionWraper = null;
+		if (pool.size() == 0 && numOfConnectionCreated < max_pool_size) {
+			connectionWraper = new DBConnectionCell(url, user, password, time_out);
+			try {
+				pool.put(connectionWraper);
+			} catch (InterruptedException e) {
+				logger.warn("Can not PUT Connection to Pool, Current Poll size = " + pool.size()
+						+ " , Number Connection : " + numOfConnectionCreated, e);
+				e.printStackTrace();
+			}
+			numOfConnectionCreated++;
+		}
+		try {
+			connectionWraper = pool.take();
+		} catch (InterruptedException e) {
+			logger.warn("Can not GET Connection from Pool, Current Poll size = " + pool.size()
+					+ " , Number Connection : " + numOfConnectionCreated);
+			e.printStackTrace();
+		}
+		connectionWraper.setRelaxTime(System.currentTimeMillis());
+		return connectionWraper;
+	}
+
+	
+	public void releaseConnection(DBConnectionCell conn) {
+		try {
+			if (conn.isClosed()) {
+				pool.remove(conn);
+				DBConnectionCell connection = new DBConnectionCell(url, user, password, time_out);
+				pool.put(connection);
+			} else {
+				pool.put(conn);
+			}
+		} catch (Exception e) {
+			logger.info("Connection : " + conn.toString(), e);
+		}
+	}
+
+	@Override
+    public String toString() {
+        return "ConnectionPool{" +
+                "pool=" + pool +
+                ", max_pool_size=" + max_pool_size +
+                ", init_pool_size=" + init_pool_size +
+                ", min_pool_size=" + min_pool_size +
+                ", time_out=" + time_out +
+                ", url='" + url + '\'' +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+7. Một số thư viện có sẵn: Hikari, C3p0, Apache commons DBCP
