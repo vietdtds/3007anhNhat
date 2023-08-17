@@ -1,0 +1,25 @@
+Dự án bán hàng
+Mô tả các chức năng quan trọng của Customer (khách hàng)
+1. Đăng kí và Đăng nhập: Khasch hàng có thể đăng kí tài khoản mới bằng cách cung cấp các thông tin cần thiết và xác minh tài khoản qua email hoặc sđt. Sau khi có tài khoản họ có thể đăng nhập vào và truy cập vào của hàng trực tuyến.
+(Hiện tại thì chức năng này chưa làm)
+2. Xem sản phẩm: Khách hàng có thể sử dụng các bộ lọc, tìm kiếm và phân loại các sản phẩm cho thuận tiện việc tìm kiếm và lựa chọn sản phẩm phù hợp theo mong muốn
+3. Xem chi tiết sản phẩm: Khi chọn sản phẩm cụ thể, khách hàng có thể xem chi tiết sản phẩm, bao gồm phầm mô tả, giá cả, hình ảnh, màu sắc, size số cũng như là đánh giá từ người dùng khác
+4. Thêm vào giỏ hàng: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này. Họ cũng có thể điều chỉnh số lượng sản phẩm trong giỏ hàng và xem tổng giá trị đơn hàng
+5. Thanh toán: Sau khi chọn xong sản phẩm, KH có thể tiến hành thanh toán, họ có thể có nhiều hình thức thanh toán như thẻ tín dụng, chuyển khoản, hoặc thanh toán khi nhận hàng.
+6. Theo dõi đơn hàng: KH có thể theo dõi tình trạng và vị trí đơn hàng sau khi đã thanh toán. KH sẽ nhận được thông báo về việc xác nhận đơn hàng, vận chuyển và giao hàng
+7. Xem lịch sử mua hàng: KH có thể xem lịch sử mua hàng của mình, bao gồm tất cả các đơn hàng đã mua và chi tiết đơn hàng đó
+8. Đánh giá và nhận xét: Sau khi nhận hàng, KH có thể đánh giá và viết nhận xét về sản phẩm hoặc trải nghiệm mua sắm. Những đánh giá này giúp cho người mua khác trong quá trình lựa chọn sản phẩm
+9. Quản lí tài khoản: Khách hàng có thể quản lí thông tin cá nhân, thay đổi mật khẩu, địa chỉ giao hàng 
+10. Liên hệ và hỗ trợ: KH có thể liên hệ dịch vụ qua hotline để được hỗ trợ mọi vấn đề liên quan đến đơn hàng, sản phẩm
+
+Với những chức năng trên, thì cần những bảng database:
+1. Bảng KH (Customers): Lưu trữ thông tin về tài khoản của KH, bao gồm ID khách hàng, tên, địa chỉ, thông tin liên hệ, tên đăng nhập, mật khẩu (đã được mã hóa)
+2. Bảng SP (Products): Chứa thông tin về sản phẩm bán, bao gồm ID sản phẩm, tên, mô tả, giá, hình ảnh, size, màu sắc và một số thuộc tính (có thể bổ sung)
+3. Bảng đơn hàng (Orders): Ghi lại thông tin về các đơn hàng được tạo bởi KH, bao gồm  ID đơn hàng, ID khách hàng, ngày đặt hàng, tình trạng đơn hàng (đang xử lí, đã giao hàng, hoàn hàng, ..)
+4. Bảng chi tiết đơn hàng (OrderDetails): Liên kết các sản phẩm với đơn hàng. Bao gồm ID chi tiết đơn hàng, ID đơn hàng, ID sản phẩm, số lượng, giá bán, size, màu sắc, hình thức vận chuyển, thanh toán thành tiền
+5. Bảng đánh giá và nhận xét (Reviews, cmt): Lưu trữ đánh giá và nhận xét của KH về sp. Bao gồm ID đánh giá, ID khách hàng, ID sản phẩm, điểm đánh giá, nội dung nhận xét, ngày đánh giá.
+6. Bảng thanh toán (Payments): Ghi lại thông tin các giao dịch thanh toán của KH. Bao gồm ID thanh toán, ID đơn hàng, phương thức thanh toán, ngày thanh toán, số tiền
+7. Bảng lịch sử mua hàng (OrderHistory): ID lịch sử mua hàng, id khách hàng, id đơn hàng
+8. Bảng thông báo: ID thông báo, ID khách hàng, Nội dung thông báo(Content), Ngày tạo
+9. Bảng tài khoản ngân hàng: chưa tính tới
+10. Bảng quản lí tài khoản: ID quản lí tài khoản, ID khách hàng, lịch sử giao dịch
