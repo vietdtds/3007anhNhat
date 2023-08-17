@@ -8,9 +8,9 @@ Mô tả các chức năng quan trọng của Customer (khách hàng)
 - Tìm kiếm: Khách hàng có thể tìm kiếm sản phẩm bằng cách nhập từ khóa hoặc cụm từ (sẽ tìm kiếm theo gần giống thì sẽ hiển thị ra gợi ý).
 3. Xem chi tiết sản phẩm: Khi chọn sản phẩm cụ thể, khách hàng có thể xem chi tiết sản phẩm, bao gồm phầm mô tả, giá cả, hình ảnh, màu sắc, size số cũng như là đánh giá từ người dùng khác
 4. Thêm vào giỏ hàng: 
-- Chọn sản phẩm: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này.
+- Chọn sản phẩm: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này (khi thêm vào tức là tạo 1 giỏ hàng, và sẽ được lưu trữ, khi thanh toán xong, chọn sản phẩm mới thì sẽ là 1 giỏ hàng mới và cũng được lưu trữ tương tự)
 - Lựa chọn số lượng: Khách hàng có thể chọn số lượng sản phẩm muốn mua, và thêm chúng vào giỏ hàng.
-- Xem giỏ hàng: Khách hàng có thể xem lại danh sách sản phẩm trong giỏ hàng, điều chỉnh số lượng và xem tổng giá trị đơn hàng. Có thể tiếp tục mua sắm hoặc tiến hành thanh toán
+- Xem giỏ hàng: Khách hàng có thể xem lại danh sách sản phẩm trong giỏ hàng, điều chỉnh số lượng và xem tổng giá trị đơn hàng. Có thể tiếp tục mua sắm hoặc tiến hành thanh toán.
 5. Thanh toán: Sau khi chọn xong sản phẩm, KH có thể tiến hành thanh toán
 - Chọn phương thức thanh toán: Khách hàng có thể chọn phương thức thanh toán như thẻ tín dụng, chuyển khoản ngân hàng hoặc thanh toán khi nhận hàng.
 - Điền thông tin thanh toán: Khách hàng cần cung cấp thông tin liên quan đến phương thức thanh toán được chọn.
