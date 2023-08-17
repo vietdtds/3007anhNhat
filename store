@@ -1,15 +1,32 @@
 Dự án bán hàng
 Mô tả các chức năng quan trọng của Customer (khách hàng)
-1. Đăng kí và Đăng nhập: Khasch hàng có thể đăng kí tài khoản mới bằng cách cung cấp các thông tin cần thiết và xác minh tài khoản qua email hoặc sđt. Sau khi có tài khoản họ có thể đăng nhập vào và truy cập vào của hàng trực tuyến.
-(Hiện tại thì chức năng này chưa làm)
-2. Xem sản phẩm: Khách hàng có thể sử dụng các bộ lọc, tìm kiếm và phân loại các sản phẩm cho thuận tiện việc tìm kiếm và lựa chọn sản phẩm phù hợp theo mong muốn
+1. Đăng kí và Đăng nhập:(Hiện tại thì chức năng này chưa làm)
+- Đăng kí: Khách hàng cung cấp thông tin cá nhân như tên, địa chỉ, số điện thoại và email để tạo tài khoản mới. Họ cần xác minh tài khoản qua email hoặc số điện thoại trước khi sử dụng.
+- Đăng nhập: Khách hàng sử dụng tên đăng nhập và mật khẩu để đăng nhập vào tài khoản đã đăng ký.
+2. Xem sản phẩm: 
+- Sắp xếp và lọc: Khách hàng có thể sắp xếp sản phẩm theo giá, tên hoặc danh mục. Họ cũng có thể sử dụng bộ lọc để hiển thị các sản phẩm theo các yếu tố như màu sắc, size, thể loại, giá, thương hiệu và khuyến mãi
+- Tìm kiếm: Khách hàng có thể tìm kiếm sản phẩm bằng cách nhập từ khóa hoặc cụm từ (sẽ tìm kiếm theo gần giống thì sẽ hiển thị ra gợi ý).
 3. Xem chi tiết sản phẩm: Khi chọn sản phẩm cụ thể, khách hàng có thể xem chi tiết sản phẩm, bao gồm phầm mô tả, giá cả, hình ảnh, màu sắc, size số cũng như là đánh giá từ người dùng khác
-4. Thêm vào giỏ hàng: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này. Họ cũng có thể điều chỉnh số lượng sản phẩm trong giỏ hàng và xem tổng giá trị đơn hàng
-5. Thanh toán: Sau khi chọn xong sản phẩm, KH có thể tiến hành thanh toán, họ có thể có nhiều hình thức thanh toán như thẻ tín dụng, chuyển khoản, hoặc thanh toán khi nhận hàng.
-6. Theo dõi đơn hàng: KH có thể theo dõi tình trạng và vị trí đơn hàng sau khi đã thanh toán. KH sẽ nhận được thông báo về việc xác nhận đơn hàng, vận chuyển và giao hàng
-7. Xem lịch sử mua hàng: KH có thể xem lịch sử mua hàng của mình, bao gồm tất cả các đơn hàng đã mua và chi tiết đơn hàng đó
-8. Đánh giá và nhận xét: Sau khi nhận hàng, KH có thể đánh giá và viết nhận xét về sản phẩm hoặc trải nghiệm mua sắm. Những đánh giá này giúp cho người mua khác trong quá trình lựa chọn sản phẩm
-9. Quản lí tài khoản: Khách hàng có thể quản lí thông tin cá nhân, thay đổi mật khẩu, địa chỉ giao hàng 
+4. Thêm vào giỏ hàng: 
+- Chọn sản phẩm: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này.
+- Lựa chọn số lượng: Khách hàng có thể chọn số lượng sản phẩm muốn mua, và thêm chúng vào giỏ hàng.
+- Xem giỏ hàng: Khách hàng có thể xem lại danh sách sản phẩm trong giỏ hàng, điều chỉnh số lượng và xem tổng giá trị đơn hàng. Có thể tiếp tục mua sắm hoặc tiến hành thanh toán
+5. Thanh toán: Sau khi chọn xong sản phẩm, KH có thể tiến hành thanh toán
+- Chọn phương thức thanh toán: Khách hàng có thể chọn phương thức thanh toán như thẻ tín dụng, chuyển khoản ngân hàng hoặc thanh toán khi nhận hàng.
+- Điền thông tin thanh toán: Khách hàng cần cung cấp thông tin liên quan đến phương thức thanh toán được chọn.
+6. Theo dõi đơn hàng: 
+- Theo dõi tình trạng: KH có thể theo dõi tình trạng và vị trí đơn hàng sau khi đã thanh toán, từ khi đặt hàng cho đến khi giao hàng.
+- Thông báo cập nhật đơn hàng: Khách hàng nhận thông báo về các cập nhật về đơn hàng như xác nhận đặt hàng, vận chuyển và giao hàng.
+7. Xem lịch sử mua hàng: 
+- Xem danh sách những đơn hàng trước đó: Khách hàng có thể xem danh sách các đơn hàng đã đặt trước đó.
+- Xem detail từng đơn hàng bao gồm chi tiết sản phẩm, tình trạng đơn hàng.
+8. Đánh giá và nhận xét: 
+- Đánh giá sản phẩm: Tại trang chi tiết sản phẩm hoặc trong lịch sử mua hàng, khách hàng có thể đánh giá sản phẩm bằng cách chọn số sao và viết nhận xét.
+- Xem đánh giá và nhận xét: Họ có thể xem đánh giá và nhận xét từ người dùng khác để có cái nhìn tổng quan về sản phẩm.
+9. Quản lí tài khoản: 
+- Cập nhật thông tin: Khách hàng có thể cập nhật thông tin cá nhân như địa chỉ, số điện thoại và email.
+- Thay đổi mật khẩu: Khách hàng có thể thay đổi mật khẩu đăng nhập vào tài khoản.
+- Xem lịch sử giao dịch: Họ có thể xem lịch sử giao dịch, danh sách đơn hàng.
 10. Liên hệ và hỗ trợ: KH có thể liên hệ dịch vụ qua hotline để được hỗ trợ mọi vấn đề liên quan đến đơn hàng, sản phẩm
 
 Với những chức năng trên, thì cần những bảng database:
