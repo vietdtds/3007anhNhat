@@ -1,4 +1,6 @@
-Admin:
+Dự án bán hàng
+Mô tả các chức năng quan trọng của Admin (Quản trị viên)
+
 1. Quản lý Sản phẩm:
 - Thêm Sản phẩm mới: Cho phép nhập tên, giá, mô tả, danh mục, hình ảnh và thông tin khác về sản phẩm.
 - Sửa thông tin Sản phẩm: Cập nhật thông tin về sản phẩm, như giá, mô tả, hình ảnh.
