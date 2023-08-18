@@ -8,9 +8,9 @@ Mô tả các chức năng quan trọng của Customer (khách hàng)
 - Tìm kiếm: Khách hàng có thể tìm kiếm sản phẩm bằng cách nhập từ khóa hoặc cụm từ (sẽ tìm kiếm theo gần giống thì sẽ hiển thị ra gợi ý).
 3. Xem chi tiết sản phẩm: Khi chọn sản phẩm cụ thể, khách hàng có thể xem chi tiết sản phẩm, bao gồm phầm mô tả, giá cả, hình ảnh, màu sắc, size số cũng như là đánh giá từ người dùng khác
 4. Thêm vào giỏ hàng: 
-- Chọn sản phẩm: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này (khi thêm vào tức là tạo 1 giỏ hàng, và sẽ được lưu trữ, khi thanh toán xong, chọn sản phẩm mới thì sẽ là 1 giỏ hàng mới và cũng được lưu trữ tương tự)
-- Lựa chọn số lượng: Khách hàng có thể chọn số lượng sản phẩm muốn mua, và thêm chúng vào giỏ hàng.
-- Xem giỏ hàng: Khách hàng có thể xem lại danh sách sản phẩm trong giỏ hàng, điều chỉnh số lượng và xem tổng giá trị đơn hàng. Có thể tiếp tục mua sắm hoặc tiến hành thanh toán.
+- Chọn sản phẩm: Khách hàng có khả năng thêm sản phẩm vào giỏ hàng để lựa chọn và mua sau này (khi thêm vào tức là tạo 1 giỏ hàng, và sẽ được lưu trữ, khi bấm vào thanh toán thì là mua toàn bộ sp trong đó, tiếp theo chọn sản phẩm mới thì sẽ là 1 giỏ hàng mới và cũng được lưu trữ tương tự)
+- Lựa chọn số lượng: Khách hàng có thể chọn số lượng sản phẩm muốn mua, và thêm chúng vào giỏ hàng cũng như có thể chỉnh sửa số lượng sản phẩm trong giỏ hàng luôn.
+- Xem giỏ hàng: Khách hàng có thể xem lại danh sách sản phẩm trong giỏ hàng, điều chỉnh số lượng và xem tổng giá trị đơn hàng. Có thể tiếp tục mua sắm hoặc tiến hành thanh toán
 5. Thanh toán: Sau khi chọn xong sản phẩm, KH có thể tiến hành thanh toán
 - Chọn phương thức thanh toán: Khách hàng có thể chọn phương thức thanh toán như thẻ tín dụng, chuyển khoản ngân hàng hoặc thanh toán khi nhận hàng.
 - Điền thông tin thanh toán: Khách hàng cần cung cấp thông tin liên quan đến phương thức thanh toán được chọn.
@@ -29,14 +29,64 @@ Mô tả các chức năng quan trọng của Customer (khách hàng)
 - Xem lịch sử giao dịch: Họ có thể xem lịch sử giao dịch, danh sách đơn hàng.
 10. Liên hệ và hỗ trợ: KH có thể liên hệ dịch vụ qua hotline để được hỗ trợ mọi vấn đề liên quan đến đơn hàng, sản phẩm
 
-Với những chức năng trên, thì cần những bảng database:
-1. Bảng KH (Customers): Lưu trữ thông tin về tài khoản của KH, bao gồm ID khách hàng, tên, địa chỉ, thông tin liên hệ, tên đăng nhập, mật khẩu (đã được mã hóa)
-2. Bảng SP (Products): Chứa thông tin về sản phẩm bán, bao gồm ID sản phẩm, tên, mô tả, giá, hình ảnh, size, màu sắc và một số thuộc tính (có thể bổ sung)
-3. Bảng đơn hàng (Orders): Ghi lại thông tin về các đơn hàng được tạo bởi KH, bao gồm  ID đơn hàng, ID khách hàng, ngày đặt hàng, tình trạng đơn hàng (đang xử lí, đã giao hàng, hoàn hàng, ..)
-4. Bảng chi tiết đơn hàng (OrderDetails): Liên kết các sản phẩm với đơn hàng. Bao gồm ID chi tiết đơn hàng, ID đơn hàng, ID sản phẩm, số lượng, giá bán, size, màu sắc, hình thức vận chuyển, thanh toán thành tiền
-5. Bảng đánh giá và nhận xét (Reviews, cmt): Lưu trữ đánh giá và nhận xét của KH về sp. Bao gồm ID đánh giá, ID khách hàng, ID sản phẩm, điểm đánh giá, nội dung nhận xét, ngày đánh giá.
-6. Bảng thanh toán (Payments): Ghi lại thông tin các giao dịch thanh toán của KH. Bao gồm ID thanh toán, ID đơn hàng, phương thức thanh toán, ngày thanh toán, số tiền
-7. Bảng lịch sử mua hàng (OrderHistory): ID lịch sử mua hàng, id khách hàng, id đơn hàng
-8. Bảng thông báo: ID thông báo, ID khách hàng, Nội dung thông báo(Content), Ngày tạo
-9. Bảng tài khoản ngân hàng: chưa tính tới
-10. Bảng quản lí tài khoản: ID quản lí tài khoản, ID khách hàng, lịch sử giao dịch
+
+Dựa trên mô tả chi tiết chức năng của khách hàng (customer)
+1. Bảng Khách hàng (Customers):
+- CustomerID (Khóa chính)
+- Name (Tên khách hàng)
+- Address (Địa chỉ)
+- PhoneNumber (Số điện thoại)
+- Email (Địa chỉ email)
+- Username (Tên đăng nhập)
+- Password (Mật khẩu đã mã hóa)
+- RegistrationDate (Ngày đăng kí)
+2. Bảng Sản phẩm (Products)
+- ProductID (Khóa chính)
+- ProductName (Tên sản phẩm)
+- Description (Mô tả sản phẩm)
+- Price (Giá sản phẩm)
+- Image (Đường dẫn hình ảnh)
+- Color (Màu sắc)
+- Size (Kích thước)
+- Category (Thể loại)
+- Brand (Thương hiệu)
+- Promotion (Khuyến mãi)
+3. Bảng Giỏ hàng (ShoppingCart):
+- CartID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- ProductID (Khóa ngoại liên kết với Products)
+- Quantity (Số lượng sản phẩm trong giỏ hàng)
+4. Bảng Đơn hàng (Orders):
+- OrderID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- OrderDate (Ngày đặt hàng)
+- PaymentMethod (Phương thức thanh toán)
+- PaymentDetails (Thông tin thanh toán)
+5. Bảng Chi tiết đơn hàng (OrderDetails):
+- OrderDetailID (Khóa chính)
+- OrderID (Khóa ngoại liên kết với Orders)
+- ProductID (Khóa ngoại liên kết với Products)
+- Quantity (Số lượng sản phẩm trong chi tiết đơn hàng)
+- Price (Giá bán của một sản phẩm)
+- Total (Tổng số tiền cho sản phẩm này trong chi tiết đơn hàng)
+6. Bảng Lịch sử đơn hàng (OrderHistory):
+- OrderHistoryID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- OrderID (Khóa ngoại liên kết với Orders)
+7. Bảng Đánh giá và Nhận xét (Reviews):
+- ReviewID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- ProductID (Khóa ngoại liên kết với Products)
+- Rating (Điểm đánh giá)
+- ReviewContent (Nội dung đánh giá)
+8. Bảng Quản lý tài khoản (AccountManagement):
+- AccountID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- Address (Địa chỉ)
+- PhoneNumber (Số điện thoại)
+- Email (Địa chỉ email)
+9. Bảng Liên hệ và Hỗ trợ (ContactSupport):
+- SupportID (Khóa chính)
+- CustomerID (Khóa ngoại liên kết với Customers)
+- IssueType (Loại vấn đề)
+- Description (Mô tả vấn đề)
