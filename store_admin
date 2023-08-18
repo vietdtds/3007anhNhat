@@ -1,0 +1,26 @@
+Dự án bán hàng
+Mô tả các chức năng quan trọng của Admin (Quản trị viên)
+
+1. Quản lý Sản phẩm:
+- Thêm Sản phẩm mới: Cho phép nhập tên, giá, mô tả, danh mục, hình ảnh và thông tin khác về sản phẩm.
+- Sửa thông tin Sản phẩm: Cập nhật thông tin về sản phẩm, như giá, mô tả, hình ảnh.
+- Xóa Sản phẩm: Loại bỏ sản phẩm không còn cần thiết.
+- Xem danh sách Sản phẩm: Hiển thị danh sách toàn bộ sản phẩm có trong hệ thống.
+2. Quản lý Danh mục:
+- Tạo Danh mục mới: Cho phép tạo danh mục mới để phân loại sản phẩm.
+- Chỉnh sửa Danh mục: Cập nhật tên và thông tin liên quan đến danh mục.
+- Xóa Danh mục: Xóa danh mục không cần thiết.
+- Xem danh sách Danh mục: Hiển thị danh sách các danh mục có trong hệ thống.
+3.Quản lý Đơn hàng:
+- Xem danh sách Đơn hàng: Hiển thị danh sách đơn hàng cùng trạng thái, ngày đặt hàng và thông tin liên quan.
+- Xem chi tiết Đơn hàng: Hiển thị thông tin chi tiết về đơn hàng và sản phẩm bao gồm tên, số lượng, giá.
+- Cập nhật trạng thái Đơn hàng: Thay đổi trạng thái của đơn hàng như "Chờ xác nhận", "Đang vận chuyển", "Đã hoàn thành".
+4.Quản lý Khách hàng:
+- Xem danh sách Khách hàng: Hiển thị danh sách khách hàng và thông tin liên quan.
+- Xem chi tiết Khách hàng: Hiển thị thông tin chi tiết về khách hàng, lịch sử đơn hàng.
+- Cập nhật thông tin Khách hàng: Cho phép chỉnh sửa thông tin cá nhân của khách hàng.
+5.Quản lý Khuyến mãi:
+- Thêm chương trình Khuyến mãi: Tạo chương trình khuyến mãi với thông tin về mã giảm giá, phần trăm giảm giá, ngày áp dụng.
+- Sửa thông tin Khuyến mãi: Cập nhật thông tin về chương trình khuyến mãi.
+- Xóa Khuyến mãi: Loại bỏ chương trình khuyến mãi không cần thiết.
+- Xem danh sách Khuyến mãi: Hiển thị danh sách các chương trình khuyến mãi đang diễn ra.

@@ -1,0 +1,18 @@
+Dự án bán hàng
+Mô tả các chức năng quan trọng của Product (sản phẩm)
+1. Hiển thị thông tin sản phẩm:
+- Tên Sản phẩm: Hiển thị tên sản phẩm.
+- Giá Sản phẩm: Hiển thị giá sản phẩm.
+- Hình ảnh Sản phẩm: Hiển thị hình ảnh chất lượng cao của sản phẩm.
+- Mô tả Sản phẩm: Hiển thị mô tả chi tiết về sản phẩm.
+- Đánh giá và Bình luận: Cho phép khách hàng xem đánh giá và bình luận của người khác.
+2. Lọc và tìm kiếm sản phẩm:
+- Lọc theo Danh mục: Cho phép người dùng chọn danh mục để lọc sản phẩm.
+- Tìm kiếm: Cung cấp khung tìm kiếm để người dùng tìm kiếm sản phẩm theo từ khóa.
+3. Chi tiết sản phẩm:
+- Đặc điểm sản phẩm: Hiển thị thông tin chi tiết về sản phẩm, như kích thước, trọng lượng, chất liệu.
+- Đánh giá và Bình luận: Cho phép người dùng đánh giá và viết bình luận về sản phẩm.
+- Sản phẩm liên quan: Hiển thị danh sách các sản phẩm tương tự hoặc liên quan.
+4.Thêm vào giỏ hàng:
+- Nút "Thêm vào giỏ hàng": Cho phép khách hàng thêm sản phẩm vào giỏ hàng từ trang chi tiết sản phẩm.
+- Giỏ hàng: Hiển thị số lượng sản phẩm trong giỏ hàng và tổng tiền.
