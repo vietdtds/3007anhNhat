@@ -51,8 +51,8 @@ Dựa trên mô tả chi tiết chức năng của khách hàng (customer)
 - Category (Thể loại)
 - Brand (Thương hiệu)
 - Promotion (Khuyến mãi)
-3. Bảng Giỏ hàng (ShoppingCart):
-- CartID (Khóa chính)
+3. Bảng Giỏ hàng (Card):
+- Card (Khóa chính)
 - CustomerID (Khóa ngoại liên kết với Customers)
 - ProductID (Khóa ngoại liên kết với Products)
 - Quantity (Số lượng sản phẩm trong giỏ hàng)
